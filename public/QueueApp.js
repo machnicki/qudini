@@ -1,45 +1,45 @@
-(function () {
+(function (window) {
 
-    angular.module('qudini.QueueApp', [])
-        .controller('QueueCtrl', QueueCtrl)
+    window.app = angular.module('qudini.QueueApp', []);
 
     /**
      * Bonus points - manipulating the without waiting for the
      * server request
      */
-    function QueueCtrl($scope, $http) {
+    app.controller('QueueCtrl', ['$scope', '$http', function($scope, $http) {
 
-        $scope.customers = [];
-        $scope.customersServed = [];
-        _getCustomers();
-        _getServedCustomers();
+		$scope.customers = [];
+		$scope.customersServed = [];
 
-        $scope.onCustomerAdded = function(){
-            _getCustomers();
-        }
+		_getCustomers();
+		_getServedCustomers();
 
-        $scope.onCustomerRemoved = function(){
-            _getCustomers();
-        }
+		$scope.onCustomerAdded = function(){
+			_getCustomers();
+		}
 
-        $scope.onCustomerServed = function(){
-            _getCustomers();
-            _getServedCustomers()
-        }
+		$scope.onCustomerRemoved = function(){
+			_getCustomers();
+		}
 
-        function _getServedCustomers(){
-            return $http.get('/api/customers/served').then(function(res){
-                $scope.customersServed = res.data;
-            })
-        }
+		$scope.onCustomerServed = function(){
+			_getCustomers();
+			_getServedCustomers()
+		}
 
-        function _getCustomers(){
-            return $http.get('/api/customers').then(function(res){
-                $scope.customers = res.data;
-            })
-        }
-    }
+		function _getServedCustomers(){
+			return $http.get('/api/customers/served').then(function(res){
+				$scope.customersServed = res.data;
+			})
+		}
+
+		function _getCustomers(){
+			return $http.get('/api/customers').then(function(res){
+				$scope.customers = res.data;
+			})
+		}
+	}]);
 
 
-})()
+})(window);
 

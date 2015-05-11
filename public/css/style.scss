@@ -1,0 +1,181 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**
+ * Values
+ */
+$sizeFontBase: 14px;
+
+$colorBorder: #a9a9a9;
+$colorButton: #0f45b1;
+$colorButtonBorder: #6296ff;
+$colorButtonBackground: #d2dfff;
+$colorButtonBackgroundHover: #72bbf3;
+
+/**
+* Helper functions
+*/
+
+@function pxToEm($px, $ref: $sizeFontBase) {
+	@return toEm(toPx($px) / toPx($ref));
+}
+@function toEm($val) {
+	@return ($val + 0em);
+}
+@function toPx($val) {
+	@return ($val + 0px);
+}
+
+
+body {
+	font-family: sans-serif;
+	font-size: $sizeFontBase;
+}
+
+.Queue {
+	padding: pxToEm(10) pxToEm(15);
+
+	h1, h2 {
+		$fontSize: 16px;
+
+		font-size: pxToEm($fontSize);
+		font-weight: bold;
+		padding: pxToEm(10, $fontSize) 0;
+		margin-top: pxToEm(15, $fontSize);
+	}
+
+	button {
+		$fontSize: 12px;
+
+		font-size: pxToEm($fontSize);
+		display: inline-block;
+		color: $colorButton;
+		border: 1px solid $colorButtonBorder;
+		padding: pxToEm(5, $fontSize) pxToEm(10, $fontSize);
+		background: $colorButtonBackground;
+		transition: background 0.2s;
+		border-radius: pxToEm(4, $fontSize);
+		cursor: pointer;
+
+		&:hover:not(:disabled) {
+			background: $colorButtonBackgroundHover;
+		}
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: default;
+		}
+	}
+
+	.AddCustomer {
+		overflow: hidden;
+
+		input, select {
+			$fontSize: 12px;
+
+			font-size: $fontSize;
+			border-radius: pxToEm(4, $fontSize);
+			display: inline-block;
+			width: 50%;
+			box-sizing: border-box;
+			padding: pxToEm(10, $fontSize) pxToEm(15, $fontSize);
+			background: $colorButtonBackground;
+			color: $colorButton;
+			border: 1px solid $colorButtonBorder;
+			float: left;
+			margin-bottom: pxToEm(10);
+
+			&::-webkit-input-placeholder {
+				color: $colorButton;
+				opacity: 0.5;
+			}
+
+			&::-moz-placeholder {
+				color: $colorButton;
+				opacity: 0.5;
+			}
+		}
+
+		select {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+
+		button {
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	.Queue-customer-list,
+	.Queue-customer-served-list {
+
+	}
+
+	.Customer {
+		display: flex;
+		align-items: center;
+		background: rgba($colorButtonBackground, 0.5);
+		padding: pxToEm(4);
+		border-radius: pxToEm(2);
+		margin-bottom: pxToEm(5);
+
+		span {
+			flex: auto;
+		}
+
+		span,
+		button {
+			margin: pxToEm(2);
+		}
+	}
+}
+

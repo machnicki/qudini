@@ -1,8 +1,8 @@
 <div class="AddCustomer">
-    <input type="text" placeholder="Name" ng-model="name"/>
-    <select ng-options="product.name for product in products" ng-model="product" placeholder="Product">
+    <input type="text" placeholder="Name" ng-model="name" required />
+    <select ng-options="product.name for product in products" ng-model="product" placeholder="Product" required>
         <option value="">Choose Product</option>
     </select>
-    <button ng-click="add()">Add</button>
+    <button ng-click="addCustomer()" ng-disabled="preventSubmit()">Add</button>
 </div>
 

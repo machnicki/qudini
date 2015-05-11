@@ -1,6 +1,5 @@
-(function () {
-    angular.module('qudini.QueueApp', [])
-        .directive('customer', Customer)
+(function (app) {
+    app.directive('customer', ['$http', Customer]);
 
     /**
      * The <customer> directive is responsible for:
@@ -33,9 +32,19 @@
                         scope.onRemoved()()
                     })
                 };
+
+				scope.serve = function() {
+					$http({
+						method: 'POST',
+						url: '/api/customer/serve',
+						data: {id: scope.customer.id}
+					}).then(function() {
+						scope.onServed()()
+					})
+				}
             }
         }
     }
 
-})()
+})(app);
 

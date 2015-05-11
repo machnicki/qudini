@@ -2,5 +2,6 @@
     <span>{{ customer.name }}</span>
     <span>{{ customer.product.name }}</span>
     <span>{{ customer.queuedTime }}</span>
-    <button ng-click="remove()">Remove</button>
+    <button ng-click="serve()" ng-show="customer.status != 'served'">Serve</button>
+    <button ng-click="remove()" ng-show="customer.status != 'served'">Remove</button>
 </div>

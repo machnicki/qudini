@@ -1,6 +1,5 @@
-(function () {
-    angular.module('qudini.QueueApp')
-        .directive('addCustomer', AddCustomer)
+(function (app) {
+    app.directive('addCustomer', ['$http', AddCustomer]);
 
 
     function AddCustomer($http){
@@ -18,12 +17,28 @@
                     {name: 'Cryptography advice'}
                 ];
 
-                scope.addCustomer = function(){
+				//disable submit button for empty values
+				scope.preventSubmit = function(){
+					if (scope.name && scope.product) {
+						return false;
+					} else return true;
+				}
 
+                scope.addCustomer = function(){
+					$http({
+						method: 'POST',
+						url: '/api/customer/add',
+						data: {
+							name: scope.name,
+							product: scope.product
+						}
+					}).then(function() {
+						scope.onAdded()()
+					})
                 }
             }
         }
     }
 
-})()
+})(app);
 

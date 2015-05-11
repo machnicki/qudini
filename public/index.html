@@ -3,13 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Queue App</title>
-    <script src="/bower_components/angularjs/angular.min.js"></script>
-    <script src="/QueueApp.js"></script>
-    <script src="/customer/Customer.js"></script>
-    <script src="/add-customer/AddCustomer.js"></script>
+    <link rel="stylesheet" href="/css/style.min.css">
 </head>
 <body class="Queue" ng-app="qudini.QueueApp" ng-controller="QueueCtrl">
-
     <h2>Add Customer</h2>
     <add-customer on-added="onCustomerAdded"></add-customer>
     <h2>Queueing Customers</h2>
@@ -24,5 +20,6 @@
             <customer customer="customerData" on-served="onCustomerServed" on-removed="onCustomerRemoved"></customer>
         </li>
     </ul>
+    <script src="/main.min.js"></script>
 </body>
 </html>
