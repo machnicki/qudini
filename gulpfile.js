@@ -7,7 +7,7 @@ var gulp 			= require('gulp'),
 	sass 			= require('gulp-ruby-sass'),
 	autoprefixer 	= require('gulp-autoprefixer');
 
-var srcJs = ['./public/bower_components/angularjs/angular.min.js', './public/*.js', './public/!(bower_components)/*.js', '!./public/main.js', '!./public/main.min.js'],
+var srcJs = ['./public/bower_components/angular/angular.js', './public/*.js', './public/!(bower_components)/*.js', '!./public/main.js', '!./public/main.min.js'],
 	srcCss = './public/css/style.scss';
 
 // Concatenate and mynifyJS Files
