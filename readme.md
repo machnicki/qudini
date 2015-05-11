@@ -51,3 +51,13 @@ in another terminal
 
 App is at 127.0.0.1:1337
 Good luck!
+
+
+## Test the up
+before testing, you need to start the server: ``` npm start ```
+
+Run unit tests
+``` npm test ```
+
+Run end to end tests
+``` npm run protractor ```
